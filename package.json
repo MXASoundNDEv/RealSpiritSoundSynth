@@ -1,0 +1,65 @@
+{
+	"name": "realspiritsoundsynth",
+	"version": "1.0.0",
+	"description": "Visualisation et contrôle du clavier APC Key 25 avec Electron et React.",
+	"main": "public/electron.js",
+	"scripts": {
+		"startOSX": "BROWSER=none react-scripts start",
+    "start": "cross-env BROWSER=none react-scripts start",
+		"electron": "wait-on tcp:3000 && electron .",
+		"dev": "concurrently \"npm run start\" \"npm run electron\"",
+		"build": "react-scripts build",
+		"electron-pack": "electron-builder",
+		"postinstall": "electron-builder install-app-deps"
+	},
+	"author": "Max",
+	"license": "MIT",
+	"dependencies": {
+		"concurrently": "^6.4.0",
+		"electron": "^25.3.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-scripts": "5.0.1",
+		"wait-on": "^6.0.1"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"electron-builder": "^23.0.0"
+	},
+	"homepage": ".",
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"build": {
+		"appId": "com.example.realspiritsoundsynth",
+		"productName": "Real Spirit Sound Synth",
+		"directories": {
+			"output": "dist"
+		},
+		"files": [
+			"build/**/*",
+			"public/**/*"
+		],
+		"extraResources": [
+			"assets/**/*"
+		],
+		"mac": {
+			"target": "dmg"
+		},
+		"win": {
+			"target": "nsis"
+		},
+		"linux": {
+			"target": "AppImage"
+		}
+	}
+}
